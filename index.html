@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Juventud de Schoenstatt — Santa Cruz, Bolivia</title>
+  <meta name="description" content="Juventud de Schoenstatt Santa Cruz - Capitales de Gracia" />
+  <style>
+    :root{
+      --bg-overlay: rgba(6,10,20,0.45);
+      --card-bg: rgba(255,255,255,0.98);
+      --card-panel: rgba(255,255,255,0.85);
+      --accent:#6b3fb5;
+      --accent-cta:#7a3fe0;
+      --muted:#6b7280;
+      --radius:16px;
+      --maxw:1000px;
+      --glass: rgba(255,255,255,0.7);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue";
+    }
+
+    /* Background full page with image */
+    html,body{height:100%; margin:0;}
+    body{
+      background:
+        linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+        url('fondo-santuario.jpg') center/cover no-repeat fixed;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:34px 16px;
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .page { width:100%; max-width:var(--maxw); margin:0 auto; }
+
+    /* ========== HEADER: recuadro translúcido ========== */
+    header{
+      display:flex;
+      align-items:center;
+      gap:18px;
+
+      background: var(--card-panel);   /* panel translúcido */
+      padding:14px 20px;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.15);
+
+      margin-bottom:28px;
+      backdrop-filter: blur(6px);           /* efecto glass */
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border-radius:14px;
+      overflow:hidden;
+      flex:0 0 76px;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .logo img{ width:100%; height:100%; object-fit:contain; display:block; }
+
+    .site-title { margin:0; font-size:24px; font-weight:800; color:#071033; }
+    .site-sub { margin:6px 0 0; color:var(--muted); font-size:14px; }
+
+    /* Centered column */
+    .center-column {
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+      align-items:center;
+    }
+
+    /* Card (main) */
+    .card {
+      background: var(--card-bg);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow: 0 18px 40px rgba(2,6,23,0.18);
+      width:100%;
+    }
+
+    .main-layout {
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .left { flex:1 1 560px; min-width:260px; }
+    .right { width:300px; flex:0 0 300px; }
+
+    h2.title { margin:0 0 10px; font-size:28px; color:#071033; }
+    p.lead { margin:0 0 16px; color:#24324a; line-height:1.5; }
+
+    .actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+
+    .btn {
+      background:var(--accent);
+      color:white;
+      border:none;
+      padding:10px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:0 8px 22px rgba(107,63,181,0.14);
+    }
+    .btn.secondary {
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(107,63,181,0.12);
+      padding:8px 12px;
+      font-weight:700;
+    }
+    .btn-cta {
+      background: linear-gradient(90deg,var(--accent-cta),var(--accent));
+      padding:12px 18px;
+      font-size:15px;
+      border-radius:14px;
+      box-shadow:0 16px 40px rgba(122,63,224,0.18);
+    }
+
+    .sections {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:8px;
+    }
+    .section {
+      background: linear-gradient(180deg,var(--glass), #fff);
+      padding:12px;
+      border-radius:10px;
+      min-height:120px;
+    }
+    .section h3{ margin:0 0 8px; font-size:15px; color:#071033; }
+    .section p{ margin:0; color:var(--muted); font-size:13px; line-height:1.45; }
+
+    /* Right summary */
+    .summary {
+      background: linear-gradient(180deg,#fff,#fff);
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 14px 30px rgba(2,6,23,0.06);
+    }
+    .summary .icon { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#faf5ff,#fff); color:var(--accent); font-size:22px; }
+
+    .summary-title { font-weight:800; font-size:16px; margin-bottom:4px; color:#071033; }
+    .summary-sub { font-size:13px; color:var(--muted); font-weight:600; }
+
+    hr.soft { border:0; border-top:1px solid rgba(2,6,23,0.06); margin:12px 0; }
+
+    /* Count card centered below */
+    .count-card {
+      width:100%;
+      background: var(--card-bg);
+      border-radius:18px;
+      padding:18px 22px;
+      box-shadow:0 20px 50px rgba(2,6,23,0.14);
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+      max-width:880px;
+    }
+    .count-left { display:flex; gap:18px; align-items:center; }
+    .count-label { font-weight:800; color:#071033; font-size:16px; }
+    .count-box {
+      background: linear-gradient(90deg,#fff,#faf8ff);
+      padding:18px 26px;
+      border-radius:14px;
+      box-shadow: inset 0 -8px 24px rgba(0,0,0,0.04);
+      font-size:34px;
+      font-weight:800;
+      color:var(--accent-cta);
+      min-width:110px;
+      text-align:center;
+    }
+
+    .count-ctas { display:flex; flex-direction:column; gap:10px; align-items:flex-end; }
+    .small { color:var(--muted); font-size:13px; }
+
+    /* Modal */
+    .modal-backdrop{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999; }
+    .modal {
+      width:100%;
+      max-width:720px;
+      background:var(--card-bg);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 30px 70px rgba(2,6,23,0.4);
+    }
+    textarea { width:100%; min-height:110px; padding:10px; border-radius:10px; border:1px solid rgba(2,6,23,0.06); resize:vertical; font-size:14px; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .main-layout{ flex-direction:column; }
+      .right{ width:100%; }
+      .count-card{ flex-direction:column; align-items:center; gap:14px; text-align:center; }
+      .count-ctas{ align-items:center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER: recuadro translúcido -->
+    <header>
+      <div class="logo" aria-hidden="true">
+        <img src="logo-schoenstatt.png" alt="Logo Schoenstatt Santa Cruz">
+      </div>
+      <div>
+        <h1 class="site-title">Juventud de Schoenstatt — Santa Cruz, Bolivia</h1>
+        <div class="site-sub">Una comunidad juvenil dedicada a la oración, el servicio y la misión.</div>
+      </div>
+    </header>
+
+    <div class="center-column">
+      <!-- tarjeta principal centrada -->
+      <div class="card" style="max-width:880px;">
+        <div class="main-layout">
+          <div class="left">
+            <h2 class="title">Capitales de Gracia</h2>
+            <p class="lead">Cada clic es una ofrenda de corazón: una oración, un deseo o un pequeño compromiso por los frutos del Congreso. Puedes dejar además una nota opcional para expresar tu intención.</p>
+
+            <div class="actions">
+              <button class="btn btn-cta" id="offer-btn">Ofrecer un Capital de Gracia 💜</button>
+              <button class="btn secondary" id="how-btn">¿Qué es un Capital de Gracia?</button>
+              <button class="btn secondary" id="share-btn">Compartir</button>
+            </div>
+
+            <div class="sections">
+              <div class="section">
+                <h3>Juventud Femenina</h3>
+                <p>Espacio de crecimiento espiritual, acompañamiento y compromiso apostólico para las jóvenes. Actividades, retiros y proyectos solidarios.</p>
+              </div>
+
+              <div class="section">
+                <h3>Juventud Masculina</h3>
+                <p>Encuentros de formación, liderazgo y servicio. Propuestas para fortalecer la fe y la responsabilidad social entre los jóvenes.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="right summary" aria-label="Resumen">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div class="icon">✝️</div>
+              <div>
+                <div class="summary-title">Juventud de Schoenstatt Santa Cruz</div>
+                <div class="summary-sub">Santa Cruz 2026 • Iniciativa juvenil</div>
+              </div>
+            </div>
+
+            <hr class="soft">
+
+            <p class="small" style="margin:0">Conectar, ofrecer intenciones y sumar un gesto colectivo por los frutos del congreso.</p>
+          </aside>
+        </div>
+      </div>
+
+      <!-- contador/cta centrado -->
+      <div style="height:18px"></div>
+      <div class="count-card" role="status" aria-live="polite" style="max-width:880px;">
+        <div class="count-left">
+          <div>
+            <div class="count-label">Total de Capitales de Gracias</div>
+            <div class="count-box" id="global-count">0</div>
+            <div class="small" style="margin-top:8px;">Gracias por sumar tu intención.</div>
+          </div>
+        </div>
+
+        <div class="count-ctas">
+          <button class="btn btn-cta" id="quick-offer">Ofrecer +1</button>
+          <button class="btn secondary" id="open-offer-modal">Ofrecer con nota</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal" aria-hidden="true" style="background: linear-gradient(rgba(2,6,23,0.5), rgba(2,6,23,0.5));">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 id="modal-title" style="margin:0 0 8px;">Ofrecer Capital de Gracia</h3>
+      <p style="margin:0 0 10px; color:var(--muted);">Escribe tu intención (opcional) y pulsa "Ofrecer".</p>
+      <textarea id="note" placeholder="Ej.: Por la paz en mi familia"></textarea>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:12px;">
+        <button class="btn" id="submit-offer">Ofrecer</button>
+        <button class="btn secondary" id="cancel-offer">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Storage key
+    const STORAGE_KEY = 'contribuciones_capitales';
+
+    // Helpers
+    function readCount(){ return Number(localStorage.getItem(STORAGE_KEY) || 0); }
+    function writeCount(n){ localStorage.setItem(STORAGE_KEY, String(n)); }
+
+    // Elements
+    const globalCountEl = document.getElementById('global-count');
+    const modalBackdrop = document.getElementById('modal');
+    const noteEl = document.getElementById('note');
+
+    function renderCount(){ globalCountEl.textContent = readCount(); }
+
+    function showModal(){
+      if(!modalBackdrop) return;
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      setTimeout(()=> { if(noteEl) noteEl.focus(); }, 120);
+    }
+    function closeModal(){
+      if(!modalBackdrop) return;
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      if(noteEl) noteEl.value = '';
+    }
+
+    function doOffer(note){
+      note = note || '';
+      const next = readCount() + 1;
+      writeCount(next);
+      renderCount();
+      try {
+        const listKey = 'capital_notes';
+        const prev = JSON.parse(localStorage.getItem(listKey) || '[]');
+        prev.unshift({ ts: Date.now(), note: note.slice(0,600) });
+        localStorage.setItem(listKey, JSON.stringify(prev.slice(0,200)));
+      } catch(e){ console.warn('No se pudo guardar nota:', e); }
+    }
+
+    function safeAdd(id, event, fn){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener(event, fn);
+    }
+
+    // Bindings
+    safeAdd('quick-offer', 'click', ()=> doOffer('Oferta rápida'));
+    safeAdd('offer-btn', 'click', showModal);
+    safeAdd('open-offer-modal', 'click', showModal);
+    safeAdd('cancel-offer', 'click', closeModal);
+    safeAdd('submit-offer', 'click', function(){
+      doOffer(noteEl ? noteEl.value : '');
+      closeModal();
+    });
+
+    safeAdd('how-btn', 'click', function(){
+      const texto = 'Un Capital de Gracia es una ofrenda espiritual (oración, sacrificio o servicio) ofrecida por una intención.';
+      alert(texto);
+    });
+
+    safeAdd('share-btn', 'click', function(){
+      const shareData = { title: document.title, text: 'Súmate a los Capitales de Gracia', url: location.href };
+      if(navigator.share) {
+        navigator.share(shareData).catch(()=>{});
+        return;
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(location.href).then(()=> alert('Enlace copiado al portapapeles.')).catch(()=> prompt('Copia este enlace:', location.href));
+      } else {
+        prompt('Copia este enlace:', location.href);
+      }
+    });
+
+    if(modalBackdrop){
+      modalBackdrop.addEventListener('click', function(e){
+        if(e.target === modalBackdrop) closeModal();
+      });
+    }
+
+    // Init
+    renderCount();
+  </script>
+</body>
+</html>
